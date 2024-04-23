@@ -1,0 +1,20 @@
+{
+  "name": "playwright-ts-phc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.1",
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.4",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "playwright": "^1.43.1"
+  }
+}
