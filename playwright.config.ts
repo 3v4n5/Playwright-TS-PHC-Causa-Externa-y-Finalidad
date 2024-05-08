@@ -1,5 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
-
+import { defineConfig } from 'playwright/test';
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -28,9 +27,11 @@ export default defineConfig ({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    headless: true, //visualizar pruebas en navegadores
-    video: 'on', //graba video dela prueba
-    screenshot: 'on'
+    headless: false, //visualizar pruebas en navegadores
+    actionTimeout: 60000,
+    ignoreHTTPSErrors: true,
+    video: 'off', //graba video dela prueba
+    screenshot: 'off'
   },
 
   /* Configure projects for major browsers */
@@ -79,9 +80,9 @@ export default defineConfig ({
           name: 'chrome web',
           use: {
             browserName: 'chromium',
-            launchOptions: {
-              args: ['--ignore-certificate-errors']
-            },
+            // launchOptions: {
+            //   args: ['--ignore-certificate-errors']
+            // },
             viewport: { width: 1420, height: 900 },
             //baseURL: BASEURL,
           }

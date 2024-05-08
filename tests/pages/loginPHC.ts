@@ -14,11 +14,11 @@ export class LoginPHC{
         this.contrasenia = page.locator('#suranetPassword')
         this.botonLogin = page.getByRole('button', { name: 'Iniciar sesión' })
         this.cerrarX = page.getByRole('link', { name: 'X' })
-        this.btnAtenciontemporal = page.locator("//button[text()='Aceptar']")
+        this.btnAtenciontemporal = page.getByRole('button', { name: 'Aceptar' })
     }
 
     async nuevoLoginPHC( usuario: string, contrasenia: string ) {
-        if( await this.linkEmpleado.isVisible() ){ 
+        if( await this.linkEmpleado.isEnabled() ){ 
             await this.linkEmpleado.click()
         }
         else{
@@ -29,8 +29,6 @@ export class LoginPHC{
         await this.botonLogin.click()
         await this.cerrarX.click();
         
-        const btnAT = this.btnAtenciontemporal
-        if ( await btnAT.isVisible() ) await btnAT.click()
     }
 
 }

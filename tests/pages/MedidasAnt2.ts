@@ -84,16 +84,16 @@ export class MedidasAntropometricas2{
         const labelClasificacion = this.labelClasificacion
         await expect( labelClasificacion ).toHaveText('Clasificación  *  ')
 
-        const clasificacionValue = this.clasificacion.inputValue()
+        const clasificacionValue = await this.clasificacion.inputValue()
         console.log('Clasificación = ', clasificacionValue)
     }
 
     async inputPerimetroAbdominal( valor: string ){
-        const labelPerimetroAbdominal = await this.labelPerimetroAbdominal
+        const labelPerimetroAbdominal = this.labelPerimetroAbdominal
         await expect( labelPerimetroAbdominal ).toHaveText('Perímetro abdominal  *  ')
 
         await this.perimetroAbdominal.fill( valor )
-        const perimetroValue = this.perimetroAbdominal.inputValue()
+        const perimetroValue = await this.perimetroAbdominal.inputValue()
         console.log('Perímetro abdominal = ', perimetroValue)
 
         console.log("")

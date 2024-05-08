@@ -34,7 +34,7 @@ export class AtencionPHC {
         this.btnSinRemision = page.locator("//img[@title='Atender sin remisión']")
         this.btnAceptarSinRemision = page.locator("//button[@ng-if='messageButtonVisible']")
         this.btnSinDerechos = page.locator("//button[@class='buttonMainAction ng-binding']")
-        this.btnConsentInform = page.locator("//button[text()='Aceptar']")
+        this.btnConsentInform = page.getByRole('button', { name: 'Aceptar' })
     }
 
     async iniciarNuevaAtencion( cedula: string ) {
@@ -50,7 +50,7 @@ export class AtencionPHC {
         await this.page.getByText( atencion, {exact: true} ).click()
 
         console.log('')
-        console.log( valorImprimir )
+        console.log( 'Atencion:',valorImprimir )
         console.log('------------------------------------------------------------------')
         console.log('')
     }
@@ -61,12 +61,12 @@ export class AtencionPHC {
         
         const botonCI = this.btnConsentInform
        
-        if( await botonCI.isVisible() ){
+        if( botonCI ){
             await botonCI.click()
         }
            await this.btnIniciarRegistro.click()
         
-        await this.page.screenshot({ path: 'tests/Screenshots/Atencion/' + 'Atencion.png' });
+        //await this.page.screenshot({ path: 'tests/Screenshots/Atencion/' + 'Atencion.png' });
     }
 
     async btnVisibleEspecialidad(){
