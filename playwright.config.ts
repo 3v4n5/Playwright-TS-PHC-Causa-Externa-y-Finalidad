@@ -31,7 +31,7 @@ export default defineConfig ({
     actionTimeout: 60000,
     ignoreHTTPSErrors: true,
     video: 'off', //graba video dela prueba
-    screenshot: 'off'
+    screenshot: 'on'
   },
 
   /* Configure projects for major browsers */

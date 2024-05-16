@@ -1,7 +1,7 @@
 import { test } from 'playwright/test';
 import { BaseUrl, Atencion, Credenciales } from './Data/Variables';
 import { LoginPHC } from './pages/loginPHC';
-import { AtencionPHC } from './pages/atencionPHC';
+import { AtencionPHC } from './pages/AtencionPHC';
 import { MedidasAntropometricas2 } from './pages/MedidasAnt2';
 import { MedidasAntropometricas } from './pages/MedidasAnt';
 import { SignosVitales } from './pages/SignosVitales';
@@ -9,21 +9,17 @@ import { SignosVitales } from './pages/SignosVitales';
 import dotenv from 'dotenv';
 dotenv.config()
 
-
 test.beforeEach(async ({ page }) => {
 
     await page.goto(BaseUrl.URL_Piloto);
 
     const login = new LoginPHC(page)
 
-
     await test.step(" Login ", async () => {
         await login.nuevoLoginPHC(Credenciales.PHCUSER, Credenciales.PHCPASSW)
     });
 
-
 });
-
 
 test('Medidas Antropometricas en PHC - Hombre >= 60', async ({ page }) => {
 
@@ -48,7 +44,7 @@ test('Medidas Antropometricas en PHC - Hombre >= 60', async ({ page }) => {
         await medidas.inputPeso('70')
         await medidas.inputPerimetroAbdominal('55')
         await medidas.inputAlturaRodilla('56')
-        await medidas.inputTallaCalculadaPorAR(78, 'H')//edad, Hombre(H) o mujer(M)
+        await medidas.inputTallaCalculadaPorAR(79, 'H')//edad, Hombre(H) o mujer(M)
         await medidas.inputIMCcalculadaPorAR()
         await medidas.inputPerimetroBraquial('22')
         await medidas.inputCircunferenciaPantorilla('25')
@@ -135,10 +131,10 @@ test('Medidas Antropometricas en PHC Hombre < 60', async ({ page }) => {
 
         await medidas2.validaEncabezadoSeccion()
         await medidas2.inputPeso('90')
+        await medidas2.inputPerimetroAbdominal('50')
         await medidas2.inputTalla('160')
         await medidas2.inputIMC()
         await medidas2.inputClasificacion()
-        await medidas2.inputPerimetroAbdominal('50')
     })
 
     await test.step('Seccion Signos Vitales', async () => {
@@ -175,10 +171,10 @@ test('Medidas Antropometricas en PHC Mujer < 60', async ({ page }) => {
 
         await medidas2.validaEncabezadoSeccion()
         await medidas2.inputPeso('90')
+        await medidas2.inputPerimetroAbdominal('50')
         await medidas2.inputTalla('160')
         await medidas2.inputIMC()
         await medidas2.inputClasificacion()
-        await medidas2.inputPerimetroAbdominal('50')
     })
 
     await test.step('Seccion Signos Vitales', async () => {

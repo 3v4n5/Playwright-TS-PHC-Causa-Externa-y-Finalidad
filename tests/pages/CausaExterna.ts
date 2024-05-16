@@ -36,19 +36,27 @@ export class CausaExterna {
         const select = this.page.locator(this.causa)
         const valoresCausa = await select.allInnerTexts()
 
-        // const selectCausa = valoresCausa.map((valor) => {
-        //     return valor
-        // })
+        const selectCausa = (() => {
+            let x = []
+            for (let i = 0; i < valoresCausa.length; i++) {
+                const element = valoresCausa[i];
+                
+            }
+            return x.push()
+        })
 
         const causas = Causa.map((key) => {
-            return Object.keys(key)
+            let claves = Object.keys(key)
+            for (const elementos of claves) {
+                return elementos
+            }
         })
         
-        console.log(valoresCausa)
         console.log(causas)
+        console.log(valoresCausa)
 
         //validacion
-        //expect(selectCausa).toEqual(causas)
+        expect(causas).toEqual(valoresCausa)
     }
 
 

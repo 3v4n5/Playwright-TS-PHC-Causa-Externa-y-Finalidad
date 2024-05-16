@@ -17,18 +17,18 @@ export class AtencionPHC {
     private btnSinDerechos: Locator;
     private btnConsentInform: Locator;
 
-    constructor( page: Page ){
+    constructor(page: Page) {
         this.page = page;
         this.abrirBuscar = page.locator('#btnOpenFinder')
         this.inputPaciente = page.locator('input[name="identificacion"]')
         this.btnBuscar = page.locator('//button[normalize-space()="Buscar paciente"]')
-        this.btnAtender = page.locator("//img[contains(@class,'posSuper gestionarBuscado')]")                     
-        
-        this.seleccionarAtencion = page.locator('//*[@id="ng-app"]/div[3]/div/div/span/div[1]/table/tbody/tr[3]/td[2]/div/input')                                        
+        this.btnAtender = page.locator("//img[@title='Atender']")
+
+        this.seleccionarAtencion = page.locator('//*[@id="ng-app"]/div[3]/div/div/span/div[1]/table/tbody/tr[3]/td[2]/div/input')
         this.seleccionarPlan = page.locator("//td[@class='width-80']//select[1]")
 
         this.btnIniciarAtencion = page.locator('//*[@id="ng-app"]/div[3]/div/div/span/div[3]/div/button[2]')
-        this.btnIniciarRegistro = page.locator("//button[contains(@class,'badge buttonGeneral')]")
+        this.btnIniciarRegistro = page.locator("//button[text()='Iniciar Registro']")
         this.btnAceptarRemision = page.locator("//button[@class='buttonMainAction ng-binding']")
         this.btnAbrirRemisiones = page.locator("(//button[@class='buttonExpand btn'])[1]")
         this.btnSinRemision = page.locator("//img[@title='Atender sin remisión']")
@@ -37,50 +37,49 @@ export class AtencionPHC {
         this.btnConsentInform = page.getByRole('button', { name: 'Aceptar' })
     }
 
-    async iniciarNuevaAtencion( cedula: string ) {
+    async iniciarNuevaAtencion(cedula: string) {
+
         await this.abrirBuscar.click()
-        await this.inputPaciente.fill( cedula )
+        await this.inputPaciente.fill(cedula)
         await this.btnBuscar.click()
-        await this.btnAtender.click()  
+        await this.btnAtender.click()
     }
-    
-    async seleccionarTipoAtencion( atencion: string ){
+
+    async seleccionarTipoAtencion(atencion: string) {
         await this.seleccionarAtencion.click()
-        const valorImprimir = await this.page.getByText( atencion ).textContent()
-        await this.page.getByText( atencion, {exact: true} ).click()
+        const valorImprimir = await this.page.getByText(atencion, { exact: true }).textContent()
+        await this.page.getByText(atencion, { exact: true }).click()
 
         console.log('')
-        console.log( 'Atencion:',valorImprimir )
+        console.log('Atencion:', valorImprimir)
         console.log('------------------------------------------------------------------')
         console.log('')
     }
-    
-    async seleccionarTipoPlan( plan ){
-        await this.seleccionarPlan.selectOption({ value: plan})
+
+    async seleccionarTipoPlan(plan: string) {
+        await this.seleccionarPlan.selectOption({ value: plan })
         await this.btnIniciarAtencion.click()
-        
-        const botonCI = this.btnConsentInform
-       
-        if( botonCI ){
-            await botonCI.click()
-        }
-           await this.btnIniciarRegistro.click()
-        
+
+        if (await this.btnConsentInform.isVisible()) await this.btnConsentInform.click()
+
+        await this.btnIniciarRegistro.click()
+
+
         //await this.page.screenshot({ path: 'tests/Screenshots/Atencion/' + 'Atencion.png' });
     }
 
-    async btnVisibleEspecialidad(){
-        const botones =[
+    async btnVisibleEspecialidad() {
+        const botones = [
             this.btnAceptarRemision,
             this.btnAbrirRemisiones,
             this.btnSinRemision,
             this.btnAceptarSinRemision,
             this.btnSinDerechos,
         ]
-        
-        for( const selector of botones ){
+
+        for (const selector of botones) {
             //const boton = this.page.locator(selector)
-            if(await selector.isVisible()) await selector.click()
+            if (await selector.isVisible()) await selector.click()
         }
-    } 
+    }
 } 
