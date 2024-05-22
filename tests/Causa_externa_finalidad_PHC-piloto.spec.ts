@@ -1,11 +1,11 @@
 import { test } from '@playwright/test';
 import { BaseUrl, Atencion, Credenciales } from './Data/Variables';
 import { LoginPHC } from './pages/loginPHC';
-import { AtencionPHC } from './pages/atencionPHC';
+import { AtencionPHC } from './pages/AtencionPHC';
 import { CausaExterna } from './pages/CausaExterna';
 
 
-test.describe.parallel('Test valores select en Causa y Finalidad', () => {
+test.describe.parallel('Opciones en campo select de ', () => {
     
     test.beforeEach(async ({ page }) => {
 
@@ -31,20 +31,13 @@ test.describe.parallel('Test valores select en Causa y Finalidad', () => {
 
     });
     
-    test.only('Causa', async ({ page }) => {
+    test('Causa y Finalidad', async ({ page }) => {
         //Objetos de paginas
         const causa = new CausaExterna(page)        
-
+        
         await causa.seleccionarCausa()
-        //await causa.seleccionarFinalidad()
-
-    })
-    test('Finalidad', async ({ page }) => {
-        //Objetos de paginas
-        const causa = new CausaExterna(page)        
-
         await causa.seleccionarFinalidad()
-
     })
+    
 })
 

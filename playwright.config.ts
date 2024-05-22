@@ -28,7 +28,7 @@ export default defineConfig ({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     headless: false, //visualizar pruebas en navegadores
-    actionTimeout: 60000,
+    actionTimeout: 6000,
     ignoreHTTPSErrors: true,
     video: 'off', //graba video dela prueba
     screenshot: 'on'

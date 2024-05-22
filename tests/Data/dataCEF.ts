@@ -1,24 +1,23 @@
 
 
-export const Causa = [
+export const Causa = 
 
     {
+        "":"",
+
         "Origen Común": [
             "Enfermedad general",
             "Promoción y mantenimiento de la salud",
             "Atención de población materno perinatal",
             "Evento adverso en salud",
             "Accidente de tránsito de origen común"
-        ]
-    },
-    {
+        ],
+    
         "Origen laboral": [
             "Enfermedad laboral",
             "Accidente de trabajo",
             "Accidente de tránsito de origen laboral"
-        ]
-    },
-    {
+        ],
 
         "Accidente": [
             'Accidente de trabajo',
@@ -27,40 +26,32 @@ export const Causa = [
             'Accidente de tránsito de origen laboral',
             'Accidente en el entorno educativo',
             'Otro tipo de accidente'
-        ]
-    },
-    {
+        ],
+    
         "Lesión": [
             'Lesión por agresión',
             'Lesión auto infligida'
-        ]
-    },
-    {
+        ],
 
         "Sospecha de violencia": [
             'Sospecha de violencia física',
             'Sospecha de violencia psicológica',
             'Sospecha de violencia sexual',
             'Sospecha de negligencia y abandono'
-        ]
-    },
-    {
+        ],
+    
         "Interrupción Voluntaria del Embarazo (IVE)": [
             'IVE relacionado con peligro a la Salud o vida de la mujer',
             'IVE por malformación congénita incompatible con la vida',
             'IVE por violencia sexual, incesto o por inseminación artificial o transferencia de ovulo fecundado no consentida'
-        ]
-    },
-    {
+        ],
 
         "Conflicto armado": [
             'Accidente de mina antipersonal',
             'Accidente de Artefacto Explosivo Improvisado',
             'Accidente de Munición Sin Explotar',
             'Otra víctima de conflicto armado colombiano'
-        ]
-    },
-    {
+        ],
 
         "Otros": [
             'Evento catastrófico de origen natural',
@@ -68,19 +59,20 @@ export const Causa = [
             'Riesgo ambiental'
         ]
     }
-]
 
 
 
-export const Finalidad = [
+
+export const Finalidad = 
 
     {
+        "":"",
 
         "Diagnóstico": 'Diagnóstico',
 
         "Tratamiento": 'Tratamiento',
 
-        "Rehabilitación:": 'Rehabilitación',
+        "Rehabilitación": 'Rehabilitación',
 
         "Paliación": 'Paliación',
 
@@ -128,4 +120,3 @@ export const Finalidad = [
             'Otra'
         ]
     }
-]

@@ -60,10 +60,7 @@ export class AtencionPHC {
         await this.seleccionarPlan.selectOption({ value: plan })
         await this.btnIniciarAtencion.click()
 
-        if (await this.btnConsentInform.isVisible()) await this.btnConsentInform.click()
-
-        await this.btnIniciarRegistro.click()
-
+        await this.btnConsentInform.isVisible() ? await this.btnConsentInform.click() : await this.btnIniciarRegistro.click()
 
         //await this.page.screenshot({ path: 'tests/Screenshots/Atencion/' + 'Atencion.png' });
     }
@@ -78,7 +75,6 @@ export class AtencionPHC {
         ]
 
         for (const selector of botones) {
-            //const boton = this.page.locator(selector)
             if (await selector.isVisible()) await selector.click()
         }
     }
