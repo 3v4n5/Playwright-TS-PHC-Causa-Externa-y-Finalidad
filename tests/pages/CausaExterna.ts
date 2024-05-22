@@ -19,10 +19,15 @@ export class CausaExterna {
     }
 
     async validaEncabezadoSeccion() {
-        await this.page.waitForSelector(this.encabezado)
+        (await this.page.waitForSelector(this.encabezado)).click()
+        await this.page.waitForTimeout(3000)
+        await this.page.screenshot({ path: 'tests/Screenshots/causaFinalidad/' + 'CausaFinalidad.png' });
+        
         const msj = await this.page.locator(this.encabezado).textContent()
         console.log('Seccion: ' + msj);
         console.log("")
+        
+
     }
 
     async seleccionarCausa() {
