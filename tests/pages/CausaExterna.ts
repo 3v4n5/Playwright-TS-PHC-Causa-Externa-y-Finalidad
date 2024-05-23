@@ -6,7 +6,7 @@ export class CausaExterna {
     private causa: string;
     private finalidad: string;
     private encabezado: string;
-    private labelCausa: string;
+    private labelCausa: Locator;
     private labelFinalidad: string;
 
     constructor(page: Page) {
@@ -14,7 +14,7 @@ export class CausaExterna {
         this.causa = ("//select[@id='prot-causa-externa']");
         this.finalidad = ("//body[1]/div[1]/div[3]/div[1]/div[3]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/span[1]/span[1]/span[32]/span[1]/span[1]/span[1]/div[1]/div[2]/div[1]/span[1]/span[1]/div[1]/div[1]/span[1]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[2]/span[1]/select[1]/option");
         this.encabezado = ("//h4[text()='Causa externa y finalidad']");
-        this.labelCausa = ("//label[text()='Causa externa']");
+        this.labelCausa = page.locator("//label[text()='Causa externa']");
         this.labelFinalidad = ("//label[text()='Finalidad de la consulta']");
     }
 
@@ -31,7 +31,7 @@ export class CausaExterna {
 
     async seleccionarCausa() {
 
-        const labelC = await this.page.locator(this.labelCausa).textContent()
+        const labelC = await this.labelCausa.textContent()
         console.log('Opciones de', labelC)
         console.log(" --------------------- ")
         console.log('')
