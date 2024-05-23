@@ -27,7 +27,6 @@ export class CausaExterna {
         console.log('Seccion: ' + msj);
         console.log("")
         
-
     }
 
     async seleccionarCausa() {
